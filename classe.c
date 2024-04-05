@@ -1,53 +1,27 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <assert.h>
-#include <string.h>
 #include "classe.h"
-
-
-void init_liste_data(liste_data* l){
-    l->tete = NULL;
+// Fonction pour initialiser une liste d'ID
+ListeID *initListeID() {
+    return NULL;
 }
 
-int ajouter_queue_data(liste_data* L, data d) {
-    element_data *new = malloc(sizeof(element_data));
-    new->suivant = NULL;
-    new->data = d;
-    element_data *temp;
-    temp = L->tete;
-    if (temp == NULL)
-    {
-        L->tete = new;
-        return 0;
+// Fonction pour ajouter un ID à une liste d'ID
+ListeID *ajouterID(ListeID *liste, int ID, int temps) {
+    ListeID *nouveau = malloc(sizeof(ListeID));
+    if (nouveau == NULL) {
+        fprintf(stderr, "Erreur : allocation mémoire échouée\n");
+        exit(EXIT_FAILURE);
     }
-    while (temp->suivant != NULL)
-    {
-        temp = temp->suivant;
+    nouveau->ID = ID;
+    nouveau->temps = temps;
+    nouveau->suivant = NULL;
+    if (liste == NULL) {
+        return nouveau;
+    } else {
+        ListeID *temp = liste;
+        while (temp->suivant != NULL) {
+            temp = temp->suivant;
+        }
+        temp->suivant = nouveau;
+        return liste;
     }
-    temp->suivant = new;
-    return 0;
-}
-
-void init_liste_sn(liste_sn* l){
-    l->tete = NULL;
-}
-
-int ajouter_queue_data(liste_sn* L, syst_node sn, double temps) {
-    element_voisin *new = malloc(sizeof(element_voisin));
-    new->suivant = NULL;
-    new->syst_node = sn;
-    new->temps = temps;
-    element_voisin *temp;
-    temp = L->tete;
-    if (temp == NULL)
-    {
-        L->tete = new;
-        return 0;
-    }
-    while (temp->suivant != NULL)
-    {
-        temp = temp->suivant;
-    }
-    temp->suivant = new;
-    return 0;
 }

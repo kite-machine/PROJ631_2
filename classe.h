@@ -1,55 +1,37 @@
-#define CLASSE_H
+#include <stdio.h>
+#include <stdlib.h>
+#ifndef _LISTES_H
+#define _LISTES_H
 
-struct element_voisin {
-    syst_node syst_node;
-    double temps;
-    struct element_voisin *suivant;
-};
-typedef struct element_voisin element_voisin;
+// Structure pour une donnée
+typedef struct {
+    int ID;
+    int taille;
+} Donnee;
 
-struct liste_voisin
-{
-    element_voisin *tete
-};
-typedef struct liste_voisin liste_sn;
+// Structure pour une liste d'ID
+typedef struct ListeID {
+    int ID;
+    int temps;
+    struct ListeID *suivant;
+} ListeID;
 
-struct element_data {
-    data data;
-    struct element *suivant;
-};
-typedef struct element_data element_data;
+// Structure pour un utilisateur
+typedef struct {
+    int ID;
+    ListeID *donnees_interet; // Liste d'ID de données d'intérêt
+    int noeud_accessible; // ID du nœud système accessible
+} Utilisateur;
 
-struct liste_data
-{
-    element_data *tete
-};
-typedef struct liste_data liste_data;
+// Structure pour un nœud système
+typedef struct {
+    int ID;
+    int capacite_memoire;
+    ListeID *donnees_stockees; // Liste d'ID de données stockées localement
+    ListeID *noeuds_accessibles; // Liste d'ID de nœuds système/utilisateurs accessibles
+} NoeudSysteme;
 
-struct donnee {
-    double taille;
-};
-typedef struct donnee data;
+ListeID *initListeID();
+ListeID *ajouterID(ListeID *liste, int ID, int temps);
 
-struct utilisateur {
-    liste_data donnees;
-    syst_node syst_node;
-    double temps;
-};
-typedef struct utilisateur user;
-
-struct noeud_systeme {
-    double capacite;
-    liste_data donnees;
-    liste_sn voisins;
-};
-typedef struct noeud_systeme syst_node;
-
-void init_liste_data(liste_data* l);
-
-int ajouter_queue_data(liste_data* l,data d);
-
-void init_liste_sn(liste_sn* l);
-
-int ajouter_queue_sn(liste_sn* l,syst_node sn, double temps);
-
-void add_acces(syst_node *sn,double id,double temps);
+#endif /* _LISTES_H */

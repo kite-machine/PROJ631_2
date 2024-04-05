@@ -1,11 +1,22 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "classe.h"
+int main() {
+    // Exemple d'utilisation des structures de données
 
-int main(int argc, char* argv[]) {
-    syst_node *ns1,*ns2,*ns3,*ns4,*ns5;
-    user *u1, *u2, *u3, *u4, *u5, *u6, *u7;
-    ns1->capacite = 50;
-    ns2->capacite = 40;
-    ns3->capacite = 50;
-    ns4->capacite = 50;
-    ns5->capacite = 40;
+    // Initialisation d'une donnée
+    Donnee donnee1 = {1, 100};
+
+    // Initialisation d'une liste d'ID
+    ListeID *listedata = initListeID();
+    listedata = ajouterID(listedata, 1,0);
+    listedata = ajouterID(listedata, 2,0);
+    listedata = ajouterID(listedata, 3,0);
+
+    // Initialisation d'un utilisateur
+    Utilisateur utilisateur1 = {1, listedata, 1};
+
+    // Initialisation d'un nœud système
+    NoeudSysteme noeud1 = {1, 1000, NULL, NULL};
+    return 0;
 }
