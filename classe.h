@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #ifndef _LISTES_H
 #define _LISTES_H
 
@@ -39,6 +40,19 @@ typedef struct ListeElement {
     struct ListeElement *suivant;
 } Environnement;
 
+// Structure pour un élément de file
+typedef struct FileElement {
+    int data;
+    struct FileElement *suivant;
+} FileElement;
+
+// Structure pour la file
+typedef struct {
+    FileElement *debut;
+    FileElement *fin;
+} File;
+
+
 ListeID *initListeID();
 ListeID *ajouterID(ListeID *liste, int ID, int temps);
 Environnement *initListeENV();
@@ -47,4 +61,5 @@ Donnee *get_data_ID(Environnement *env, int ID);
 Utilisateur *get_user_ID(Environnement *env, int ID);
 NoeudSysteme *get_ns_ID(Environnement *env, int ID);
 int capacite_restant(NoeudSysteme *ns, Environnement *env);
+int inserer_donnee(Environnement *env);
 #endif /* _LISTES_H */

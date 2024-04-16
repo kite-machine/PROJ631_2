@@ -36,10 +36,12 @@ int main() {
     NoeudSysteme noeud1 = {2001, 50, NULL, liste_acces1};
     NoeudSysteme noeud2 = {2002, 40, NULL, liste_acces2};
     NoeudSysteme noeud3 = {2003, 40, NULL, liste_acces3};
-    noeud1.donnees_stockees = ajouterID(liste_data1, 0,0);
     env = agrandir_env(env, NULL, &noeud1, NULL);
     env = agrandir_env(env, NULL, &noeud2, NULL);
     env = agrandir_env(env, NULL, &noeud3, NULL);
-    printf("%d\n",capacite_restant(&noeud1, env));
+    inserer_donnee(env);
+    printf("%d\n", capacite_restant(&noeud1, env));
+    printf("%d\n", capacite_restant(&noeud2, env));
+    printf("%d\n", capacite_restant(&noeud3, env));
     return 0;
 }
