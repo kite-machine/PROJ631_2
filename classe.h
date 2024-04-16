@@ -31,7 +31,20 @@ typedef struct {
     ListeID *noeuds_accessibles; // Liste d'ID de nœuds système/utilisateurs accessibles
 } NoeudSysteme;
 
+typedef struct ListeElement {
+    int ID;
+    Donnee *data;
+    NoeudSysteme *ns;
+    Utilisateur *user;
+    struct ListeElement *suivant;
+} Environnement;
+
 ListeID *initListeID();
 ListeID *ajouterID(ListeID *liste, int ID, int temps);
-
+Environnement *initListeENV();
+Environnement *agrandir_env(Environnement *env, Donnee *data, NoeudSysteme *ns, Utilisateur *user);
+Donnee *get_data_ID(Environnement *env, int ID);
+Utilisateur *get_user_ID(Environnement *env, int ID);
+NoeudSysteme *get_ns_ID(Environnement *env, int ID);
+int capacite_restant(NoeudSysteme *ns, Environnement *env);
 #endif /* _LISTES_H */
