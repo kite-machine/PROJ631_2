@@ -38,7 +38,7 @@ typedef struct ListeElement {
     NoeudSysteme *ns;
     Utilisateur *user;
     struct ListeElement *suivant;
-} Environnement;
+} Environnement; // Liste de tous les éléments qui sert d'environnement général
 
 // Structure pour un élément de file
 typedef struct FileElement {
